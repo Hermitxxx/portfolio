@@ -4,7 +4,7 @@ import { useScroll, useTransform, useSpring, motion, MotionValue } from 'framer-
 import { useEffect, useRef, useState } from 'react';
 
 const FRAME_COUNT = 239; // Updated to match actual assets
-const SCROLL_HEIGHT_MOBILE = 160; // Increased to 160vh for more breathing room
+const SCROLL_HEIGHT_MOBILE = 100; // Reduced to 100vh to fix the "gaping problem"
 const SCROLL_HEIGHT_DESKTOP = 400; // 400vh on desktop
 
 interface OverlayProps {
@@ -231,7 +231,17 @@ export default function SamuraiScroll() {
             <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#050505]">
                 <canvas
                     ref={canvasRef}
-                    className="block w-full h-full object-contain"
+                    className="block w-full h-full object-contain relative z-10"
+                />
+
+                {/* Mobile Background Image */}
+                <div
+                    className="absolute inset-0 bg-cover bg-center md:hidden"
+                    style={{
+                        backgroundImage: `url('./assets/hero-mobile.jpeg')`,
+                        opacity: isLoaded ? 1 : 0,
+                        transition: 'opacity 0.5s ease-in-out'
+                    }}
                 />
 
                 {/* Only show overlay and text when loaded */}
