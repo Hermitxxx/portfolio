@@ -55,7 +55,7 @@ const skillCategories: SkillCategory[] = [
 
 export default function Skills() {
     return (
-        <section id="skills" className="md:min-h-screen bg-[#050505] text-white py-8 md:py-24 px-4 md:px-6 relative overflow-hidden">
+        <section id="skills" className="md:min-h-screen bg-[#050505] text-white py-12 md:py-24 px-4 md:px-6 relative overflow-hidden">
             {/* Animated background elements */}
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#DC143C]/5 rounded-full blur-[200px] animate-pulse" />
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#8B0000]/8 rounded-full blur-[180px]" />
