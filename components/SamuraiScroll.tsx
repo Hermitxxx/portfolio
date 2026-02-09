@@ -218,24 +218,27 @@ export default function SamuraiScroll() {
     const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
     return (
-        <div ref={containerRef} className="relative w-full" style={{ height: `${scrollHeight}vh` }}>
+        <div ref={containerRef} className="relative w-full" style={{ height: `${scrollHeight}vh`, backgroundColor: '#050505' }}>
             {/* Loading Overlay */}
             {!isLoaded && (
-                <div className="fixed inset-0 bg-[#050505] flex flex-col items-center justify-center z-50">
+                <div
+                    className="fixed inset-0 flex flex-col items-center justify-center z-50 text-white"
+                    style={{ backgroundColor: '#050505' }}
+                >
                     <div className="w-64 h-1 bg-white/10 rounded-full overflow-hidden mb-4">
                         <motion.div
-                            className="h-full bg-white"
+                            className="h-full bg-[#DC143C]"
                             initial={{ width: 0 }}
                             animate={{ width: `${loadingProgress}%` }}
                         />
                     </div>
-                    <p className="text-white/40 font-mono text-sm">
-                        LOADING SEQUENCE {loadingProgress}%
+                    <p className="font-mono text-sm tracking-widest opacity-60">
+                        INITIALIZING SYSTEM {loadingProgress}%
                     </p>
                 </div>
             )}
 
-            <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#050505]">
+            <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#050505]" style={{ backgroundColor: '#050505' }}>
                 <ParticlesBackground />
                 <canvas
                     ref={canvasRef}

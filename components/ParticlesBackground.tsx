@@ -28,10 +28,10 @@ export default function ParticlesBackground() {
                 this.x = Math.random() * (canvas?.width || 0);
                 this.y = Math.random() * (canvas?.height || 0);
                 this.size = Math.random() * 1.5 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.2;
-                this.speedY = (Math.random() - 0.5) * 0.2;
+                this.speedX = (Math.random() - 0.5) * 0.15;
+                this.speedY = (Math.random() - 0.5) * 0.15;
                 this.opacity = Math.random() * 0.8 + 0.2;
-                this.twinkle = Math.random() * 0.05;
+                this.twinkle = Math.random() * 0.03;
             }
 
             update() {
@@ -54,21 +54,21 @@ export default function ParticlesBackground() {
                 if (!ctx) return;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.fillStyle = `rgba(220, 20, 60, ${this.opacity})`; // Change to Red
                 ctx.fill();
             }
         }
 
         const init = () => {
             particles = [];
-            const particleCount = window.innerWidth < 768 ? 50 : 100;
+            const particleCount = window.innerWidth < 768 ? 40 : 80;
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
         };
 
         const drawLines = () => {
-            const maxDistance = 100;
+            const maxDistance = 120;
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
@@ -77,7 +77,7 @@ export default function ParticlesBackground() {
 
                     if (distance < maxDistance) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(220, 20, 60, ${0.1 * (1 - distance / maxDistance)})`;
+                        ctx.strokeStyle = `rgba(139, 0, 0, ${0.15 * (1 - distance / maxDistance)})`;
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -99,9 +99,9 @@ export default function ParticlesBackground() {
                 canvas.width / 2, canvas.height / 2, 0,
                 canvas.width / 2, canvas.height / 2, canvas.width
             );
-            gradient.addColorStop(0, '#3d0000'); // Intense blood red center
-            gradient.addColorStop(0.6, '#1a0000'); // Deep red
-            gradient.addColorStop(1, '#050505'); // Fades to black
+            gradient.addColorStop(0, '#2e0000'); // Slightly dimmer blood red center for better text legibility
+            gradient.addColorStop(0.7, '#0a0000');
+            gradient.addColorStop(1, '#050505');
 
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
