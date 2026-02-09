@@ -4,7 +4,7 @@ import { useScroll, useTransform, useSpring, motion, MotionValue } from 'framer-
 import { useEffect, useRef, useState } from 'react';
 
 const FRAME_COUNT = 239; // Updated to match actual assets
-const SCROLL_HEIGHT_MOBILE = 200; // 200vh on mobile
+const SCROLL_HEIGHT_MOBILE = 140; // Reduced from 200vh to 140vh to decrease dead scroll
 const SCROLL_HEIGHT_DESKTOP = 400; // 400vh on desktop
 
 interface OverlayProps {
@@ -72,7 +72,7 @@ const TextOverlay = ({ scrollProgress }: OverlayProps) => {
                 <p className="text-lg md:text-2xl text-white/60 font-light tracking-wide mb-6 md:mb-8">
                     The moment of stillness.
                 </p>
-                <button className="px-8 py-3 bg-[#DC143C] text-white text-lg font-medium rounded-full hover:bg-[#8B0000] transition-colors pointer-events-auto">
+                <button className="px-5 py-2 md:px-8 md:py-3 bg-[#DC143C] text-white text-base md:text-lg font-medium rounded-full hover:bg-[#8B0000] transition-colors pointer-events-auto mt-2">
                     Begin Journey
                 </button>
             </motion.div>
@@ -175,8 +175,12 @@ export default function SamuraiScroll() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
-            // Draw image "contain" style
-            const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
+            // Draw image "cover" style for mobile, "contain" for desktop
+            const isMobile = window.innerWidth < 768;
+            const scale = isMobile
+                ? Math.max(canvas.width / img.width, canvas.height / img.height)
+                : Math.min(canvas.width / img.width, canvas.height / img.height);
+
             const w = img.width * scale;
             const h = img.height * scale;
             const x = (canvas.width - w) / 2;
