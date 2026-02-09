@@ -141,7 +141,7 @@ export default function SamuraiScroll() {
         };
 
         loadImages();
-    }, []);
+    }, [basePath]);
 
     // Canvas drawing loop
     useEffect(() => {
