@@ -125,7 +125,7 @@ export default function SamuraiScroll() {
             const promises = Array.from({ length: FRAME_COUNT }).map((_, i) => {
                 return new Promise((resolve) => {
                     const img = new Image();
-                    const url = `./assets/sequence/frame_${i}.jpg`;
+                    const url = `${basePath}/assets/sequence/frame_${i}.jpg`;
                     img.src = url;
 
                     img.onload = () => {

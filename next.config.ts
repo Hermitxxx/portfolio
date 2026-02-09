@@ -5,10 +5,10 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/portfolio',
+  basePath: '',
   trailingSlash: true,
   env: {
-    NEXT_PUBLIC_BASE_PATH: '/portfolio',
+    NEXT_PUBLIC_BASE_PATH: '',
   },
 };
 

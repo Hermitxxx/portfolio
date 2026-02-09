@@ -67,7 +67,7 @@ export default function Navbar() {
                     <div className="flex items-center gap-2 md:gap-3">
                         <div className="relative w-7 h-7 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-[#DC143C]/50 hover:border-[#DC143C] transition-colors">
                             <Image
-                                src="./assets/logo.jpg"
+                                src={`${basePath}/assets/logo.jpg`}
                                 alt="HERMIT Logo"
                                 fill
                                 className="object-cover"
