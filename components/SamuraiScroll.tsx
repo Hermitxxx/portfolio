@@ -158,6 +158,12 @@ export default function SamuraiScroll() {
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
+        const handleResize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            render();
+        };
+
         // High-DPI scaling
         const render = () => {
             // We use the spring value for smoothness
@@ -172,10 +178,6 @@ export default function SamuraiScroll() {
             const img = images[frameIndex];
             if (!img) return;
 
-            // Resize canvas to window size
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
             // Draw image "contain" style for everyone, but with a slight boost for mobile
             const isMobile = window.innerWidth < 768;
             const scaleMultiplier = isMobile ? 1.05 : 1.0;
@@ -187,7 +189,11 @@ export default function SamuraiScroll() {
             const y = (canvas.height - h) / 2;
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Use screen blend mode to hide black background of JPEGs
+            ctx.globalCompositeOperation = 'screen';
             ctx.drawImage(img, x, y, w, h);
+            ctx.globalCompositeOperation = 'source-over'; // Reset
         };
 
         // Need to update on scroll change. 
@@ -195,15 +201,15 @@ export default function SamuraiScroll() {
         // but we can use onChange or just requestAnimationFrame loop
         const unsubscribe = smoothProgress.on("change", render);
 
-        // Also render on resize
-        window.addEventListener('resize', render);
+        // Resize handler
+        window.addEventListener('resize', handleResize);
 
-        // Initial render
-        render();
+        // Initial setup and render
+        handleResize();
 
         return () => {
             unsubscribe();
-            window.removeEventListener('resize', render);
+            window.removeEventListener('resize', handleResize);
         };
     }, [isLoaded, images, smoothProgress]);
 

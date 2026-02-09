@@ -19,21 +19,19 @@ export default function ParticlesBackground() {
             x: number;
             y: number;
             size: number;
-            baseSize: number;
             speedX: number;
             speedY: number;
             opacity: number;
-            twinkleSpeed: number;
+            twinkle: number;
 
             constructor() {
                 this.x = Math.random() * (canvas?.width || 0);
                 this.y = Math.random() * (canvas?.height || 0);
-                this.baseSize = Math.random() * 2 + 0.5;
-                this.size = this.baseSize;
-                this.speedX = (Math.random() - 0.5) * 0.3;
-                this.speedY = (Math.random() - 0.5) * 0.3;
-                this.opacity = Math.random() * 0.7 + 0.3;
-                this.twinkleSpeed = Math.random() * 0.02 + 0.01;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.2;
+                this.speedY = (Math.random() - 0.5) * 0.2;
+                this.opacity = Math.random() * 0.8 + 0.2;
+                this.twinkle = Math.random() * 0.05;
             }
 
             update() {
@@ -46,8 +44,8 @@ export default function ParticlesBackground() {
                 if (this.y < 0) this.y = canvas?.height || 0;
                 if (this.y > (canvas?.height || 0)) this.y = 0;
 
-                // Subtle twinkle
-                this.opacity += Math.sin(Date.now() * this.twinkleSpeed) * 0.01;
+                // Simple twinkling
+                this.opacity += (Math.random() - 0.5) * this.twinkle;
                 if (this.opacity < 0.2) this.opacity = 0.2;
                 if (this.opacity > 1) this.opacity = 1;
             }
@@ -63,9 +61,29 @@ export default function ParticlesBackground() {
 
         const init = () => {
             particles = [];
-            const particleCount = window.innerWidth < 768 ? 60 : 120;
+            const particleCount = window.innerWidth < 768 ? 50 : 100;
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
+            }
+        };
+
+        const drawLines = () => {
+            const maxDistance = 100;
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < maxDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(220, 20, 60, ${0.1 * (1 - distance / maxDistance)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
             }
         };
 
@@ -76,17 +94,19 @@ export default function ParticlesBackground() {
         };
 
         const animate = () => {
-            // Draw blood red background gradient
+            // Draw deeper blood red background gradient
             const gradient = ctx.createRadialGradient(
                 canvas.width / 2, canvas.height / 2, 0,
                 canvas.width / 2, canvas.height / 2, canvas.width
             );
-            gradient.addColorStop(0, '#2b0000'); // Blood red center
+            gradient.addColorStop(0, '#3d0000'); // Intense blood red center
+            gradient.addColorStop(0.6, '#1a0000'); // Deep red
             gradient.addColorStop(1, '#050505'); // Fades to black
 
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+            drawLines();
             particles.forEach(p => {
                 p.update();
                 p.draw();
@@ -107,7 +127,7 @@ export default function ParticlesBackground() {
     return (
         <canvas
             ref={canvasRef}
-            className="absolute inset-0 w-full h-full pointer-events-none"
+            className="absolute inset-0 w-full h-full pointer-events-none z-0"
         />
     );
 }
