@@ -12,13 +12,13 @@ const socialLinks = [
 
 export default function About() {
     return (
-        <section id="about" className="md:min-h-screen bg-[#050505] text-white flex items-center justify-center py-12 md:py-20 px-4 md:px-6">
+        <section id="about" className="md:min-h-screen bg-[#050505] text-white flex items-center justify-center py-8 md:py-20 px-4 md:px-6">
             <div className="max-w-4xl mx-auto text-center">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter mb-8 md:mb-12"
+                    className="text-3xl xs:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter mb-6 md:mb-12"
                 >
                     THE <span className="text-[#DC143C]">HERMIT</span>
                 </motion.h2>
@@ -27,7 +27,7 @@ export default function About() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-lg md:text-xl lg:text-2xl text-white/60 font-light leading-relaxed mb-10 md:mb-16"
+                    className="text-base md:text-xl lg:text-2xl text-white/60 font-light leading-relaxed mb-8 md:mb-16 max-w-2xl mx-auto"
                 >
                     Calm in chaos. Precise in execution. I build digital experiences with the
                     discipline of the blade and the creativity of the brush. Currently forging

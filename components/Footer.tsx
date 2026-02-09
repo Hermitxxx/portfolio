@@ -2,7 +2,7 @@
 
 export default function Footer() {
     return (
-        <footer className="bg-[#050505] border-t border-white/5 text-white/40 py-8 md:py-12">
+        <footer className="bg-[#050505] border-t border-white/5 text-white/40 py-6 md:py-12">
             <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 text-center md:text-left">
                 <div>
                     <h4 className="text-[#DC143C] font-bold tracking-tighter text-lg">HERMIT</h4>

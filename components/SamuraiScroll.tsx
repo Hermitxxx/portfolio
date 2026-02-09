@@ -27,10 +27,10 @@ const TextOverlay = ({ scrollProgress }: OverlayProps) => {
                 style={{ opacity: useOpacity(0, 0.2), y: useY(0, 0.2) }}
                 className="absolute text-center"
             >
-                <h2 className="text-7xl md:text-9xl font-bold tracking-tighter text-white/90 mb-4">
+                <h2 className="text-4xl xs:text-5xl md:text-9xl font-bold tracking-tighter text-white/90 mb-2 md:mb-4">
                     SILENCE OF <span className="text-[#DC143C]">STEEL</span>
                 </h2>
-                <p className="text-xl md:text-2xl text-white/60 font-light tracking-wide">
+                <p className="text-lg md:text-2xl text-white/60 font-light tracking-wide">
                     A single motion. Total control.
                 </p>
             </motion.div>
@@ -40,10 +40,10 @@ const TextOverlay = ({ scrollProgress }: OverlayProps) => {
                 style={{ opacity: useOpacity(0.25, 0.45), y: useY(0.25, 0.45) }}
                 className="absolute left-10 md:left-32 text-left"
             >
-                <h2 className="text-6xl md:text-8xl font-bold tracking-tighter text-white/90 mb-4">
+                <h2 className="text-4xl xs:text-5xl md:text-8xl font-bold tracking-tighter text-white/90 mb-2 md:mb-4">
                     THE <span className="text-[#DC143C]">DRAW</span>
                 </h2>
-                <p className="text-xl md:text-2xl text-white/60 font-light tracking-wide">
+                <p className="text-lg md:text-2xl text-white/60 font-light tracking-wide">
                     Precision over power.
                 </p>
             </motion.div>
@@ -53,10 +53,10 @@ const TextOverlay = ({ scrollProgress }: OverlayProps) => {
                 style={{ opacity: useOpacity(0.5, 0.7), y: useY(0.5, 0.7) }}
                 className="absolute right-10 md:right-32 text-right"
             >
-                <h2 className="text-6xl md:text-8xl font-bold tracking-tighter text-white/90 mb-4">
+                <h2 className="text-4xl xs:text-5xl md:text-8xl font-bold tracking-tighter text-white/90 mb-2 md:mb-4">
                     <span className="text-[#DC143C]">CONTROL</span>
                 </h2>
-                <p className="text-xl md:text-2xl text-white/60 font-light tracking-wide">
+                <p className="text-lg md:text-2xl text-white/60 font-light tracking-wide">
                     Every movement is intentional.
                 </p>
             </motion.div>
@@ -66,10 +66,10 @@ const TextOverlay = ({ scrollProgress }: OverlayProps) => {
                 style={{ opacity: useOpacity(0.75, 0.95), y: useY(0.75, 0.95) }}
                 className="absolute text-center"
             >
-                <h2 className="text-7xl md:text-9xl font-bold tracking-tighter text-white/90 mb-6">
+                <h2 className="text-4xl xs:text-5xl md:text-9xl font-bold tracking-tighter text-white/90 mb-4 md:mb-6">
                     FINAL <span className="text-[#DC143C]">FORM</span>
                 </h2>
-                <p className="text-xl md:text-2xl text-white/60 font-light tracking-wide mb-8">
+                <p className="text-lg md:text-2xl text-white/60 font-light tracking-wide mb-6 md:mb-8">
                     The moment of stillness.
                 </p>
                 <button className="px-8 py-3 bg-[#DC143C] text-white text-lg font-medium rounded-full hover:bg-[#8B0000] transition-colors pointer-events-auto">
