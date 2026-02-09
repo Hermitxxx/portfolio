@@ -81,6 +81,7 @@ const TextOverlay = ({ scrollProgress }: OverlayProps) => {
 };
 
 export default function SamuraiScroll() {
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [images, setImages] = useState<HTMLImageElement[]>([]);
@@ -120,7 +121,7 @@ export default function SamuraiScroll() {
             const promises = Array.from({ length: FRAME_COUNT }).map((_, i) => {
                 return new Promise((resolve, reject) => {
                     const img = new Image();
-                    img.src = `/sequence/frame_${i}.jpg`;
+                    img.src = `${basePath}/sequence/frame_${i}.jpg`;
                     img.onload = () => {
                         loadedCount++;
                         setLoadingProgress(Math.round((loadedCount / FRAME_COUNT) * 100));

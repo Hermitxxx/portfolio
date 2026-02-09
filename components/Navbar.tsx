@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -61,7 +62,7 @@ export default function Navbar() {
                     <div className="flex items-center gap-2 md:gap-3">
                         <div className="relative w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-[#DC143C]/50 hover:border-[#DC143C] transition-colors">
                             <Image
-                                src="/logo.jpg"
+                                src={`${basePath}/logo.jpg`}
                                 alt="HERMIT Logo"
                                 fill
                                 className="object-cover"
