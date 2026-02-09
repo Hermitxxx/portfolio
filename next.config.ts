@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   basePath: '/portfolio',
-  assetPrefix: '/portfolio/',
   trailingSlash: true,
   env: {
     NEXT_PUBLIC_BASE_PATH: '/portfolio',

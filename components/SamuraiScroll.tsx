@@ -81,7 +81,7 @@ const TextOverlay = ({ scrollProgress }: OverlayProps) => {
 };
 
 export default function SamuraiScroll() {
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+    const basePath = (process.env.NEXT_PUBLIC_BASE_PATH || '').replace(/\/$/, '');
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [images, setImages] = useState<HTMLImageElement[]>([]);
@@ -118,10 +118,15 @@ export default function SamuraiScroll() {
         const imgArray: HTMLImageElement[] = new Array(FRAME_COUNT);
 
         const loadImages = async () => {
+            console.log(`[SamuraiScroll] Starting preload for ${FRAME_COUNT} frames`);
+            console.log(`[SamuraiScroll] Base path: "${basePath}"`);
+
             const promises = Array.from({ length: FRAME_COUNT }).map((_, i) => {
-                return new Promise((resolve, reject) => {
+                return new Promise((resolve) => {
                     const img = new Image();
-                    img.src = `${basePath}/sequence/frame_${i}.jpg`;
+                    const url = `${basePath}/sequence/frame_${i}.jpg`;
+                    img.src = url;
+
                     img.onload = () => {
                         loadedCount++;
                         setLoadingProgress(Math.round((loadedCount / FRAME_COUNT) * 100));
@@ -129,13 +134,14 @@ export default function SamuraiScroll() {
                         resolve(null);
                     };
                     img.onerror = () => {
-                        console.error(`Failed to load frame ${i}`);
+                        console.error(`[SamuraiScroll] Failed to load frame ${i} at: ${url}`);
                         resolve(null);
                     };
                 });
             });
 
             await Promise.all(promises);
+            console.log(`[SamuraiScroll] Completed preload. Loaded: ${loadedCount}/${FRAME_COUNT}`);
             setImages(imgArray);
             setIsLoaded(true);
         };

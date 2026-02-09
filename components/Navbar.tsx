@@ -7,9 +7,14 @@ import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+    const basePath = (process.env.NEXT_PUBLIC_BASE_PATH || '').replace(/\/$/, '');
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    useEffect(() => {
+        console.log('[Navbar] Current basePath:', basePath);
+        console.log('[Navbar] Logo path:', `${basePath}/logo.jpg`);
+    }, [basePath]);
 
     useEffect(() => {
         const handleScroll = () => {
