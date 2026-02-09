@@ -4,7 +4,7 @@ import { useScroll, useTransform, useSpring, motion, MotionValue } from 'framer-
 import { useEffect, useRef, useState } from 'react';
 
 const FRAME_COUNT = 239; // Updated to match actual assets
-const SCROLL_HEIGHT_MOBILE = 140; // Reduced from 200vh to 140vh to decrease dead scroll
+const SCROLL_HEIGHT_MOBILE = 160; // Increased to 160vh for more breathing room
 const SCROLL_HEIGHT_DESKTOP = 400; // 400vh on desktop
 
 interface OverlayProps {
@@ -175,11 +175,10 @@ export default function SamuraiScroll() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
-            // Draw image "cover" style for mobile, "contain" for desktop
+            // Draw image "contain" style for everyone, but with a slight boost for mobile
             const isMobile = window.innerWidth < 768;
-            const scale = isMobile
-                ? Math.max(canvas.width / img.width, canvas.height / img.height)
-                : Math.min(canvas.width / img.width, canvas.height / img.height);
+            const scaleMultiplier = isMobile ? 1.05 : 1.0;
+            const scale = Math.min(canvas.width / img.width, canvas.height / img.height) * scaleMultiplier;
 
             const w = img.width * scale;
             const h = img.height * scale;
