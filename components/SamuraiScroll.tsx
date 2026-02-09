@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from 'react';
 import ParticlesBackground from './ParticlesBackground';
 
 const FRAME_COUNT = 239; // Updated to match actual assets
-const SCROLL_HEIGHT_MOBILE = 100; // Reduced to 100vh to fix the "gaping problem"
-const SCROLL_HEIGHT_DESKTOP = 400; // 400vh on desktop
+const SCROLL_HEIGHT_MOBILE = 250; // Increased from 100vh to slow down on mobile
+const SCROLL_HEIGHT_DESKTOP = 800; // Increased from 400vh for a slower desktop experience
 
 interface OverlayProps {
     scrollProgress: MotionValue<number>;
@@ -108,8 +108,8 @@ export default function SamuraiScroll() {
 
     // Smooth spring physics
     const smoothProgress = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
+        stiffness: 70, // Slightly decreased for slower reaction
+        damping: 40,   // Increased for a smoother, heavier feel
         restDelta: 0.001
     });
 
