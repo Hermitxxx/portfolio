@@ -119,12 +119,12 @@ export default function SamuraiScroll() {
 
         const loadImages = async () => {
             console.log(`[SamuraiScroll] Starting preload for ${FRAME_COUNT} frames`);
-            console.log(`[SamuraiScroll] Base path: "${basePath}"`);
+            console.log(`[SamuraiScroll] Using relative assets path: "./assets/sequence/"`);
 
             const promises = Array.from({ length: FRAME_COUNT }).map((_, i) => {
                 return new Promise((resolve) => {
                     const img = new Image();
-                    const url = `${basePath}/sequence/frame_${i}.jpg`;
+                    const url = `./assets/sequence/frame_${i}.jpg`;
                     img.src = url;
 
                     img.onload = () => {
@@ -147,7 +147,7 @@ export default function SamuraiScroll() {
         };
 
         loadImages();
-    }, [basePath]);
+    }, []);
 
     // Canvas drawing loop
     useEffect(() => {
