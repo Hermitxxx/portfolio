@@ -47,14 +47,14 @@ export default function Projects() {
       </div>
 
       {/* Mobile Slider */}
-      <div className="md:hidden">
+      <div className="md:hidden w-full overflow-hidden">
         <Swiper
           modules={[Pagination, Autoplay]}
           spaceBetween={20}
           slidesPerView={1}
           pagination={{ clickable: true }}
           autoplay={{ delay: 3500, disableOnInteraction: false }}
-          className="pb-12"
+          className="pb-12 w-full"
         >
           {projects.map((project) => (
             <SwiperSlide key={project.id}>

@@ -33,7 +33,7 @@ export const projects = [
     id: 4,
     title: "Hermit Legacy",
     description: "The original high-performance developer portfolio featuring custom animations, interactive layouts, and advanced CSS state management.",
-    image: "/projects/Cover%20Photos/portfolio-hermit.png",
+    image: "/projects/Cover%20Photos/legacy.png",
     category: "Portfolio",
     tech: ["HTML5", "Tailwind CSS", "JavaScript", "AOS"],
     link: "https://hermitxxx.github.io/portfolio-hermit/",

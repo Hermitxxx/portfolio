@@ -18,7 +18,7 @@ export default function Home() {
         <Sidebar />
 
         {/* Center Column */}
-        <div className="flex flex-col gap-28 lg:gap-36 order-2">
+        <div className="flex flex-col gap-16 lg:gap-36 order-2">
           <Hero />
           <Projects />
           <Skills />

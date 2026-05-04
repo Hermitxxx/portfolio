@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed bottom-4 left-1/2 -translate-x-1/2 z-50 
+      className={`fixed bottom-4 left-1/2 -translate-x-1/2 z-50 max-w-[92vw]
                  ${currentTheme === "light" ? "bg-white" : "bg-base-content/6"}
                  backdrop-blur-md rounded-full py-2 px-3 flex flex-row items-center gap-2 shadow-xl border border-base-300
                  xl:static xl:translate-x-0 xl:sticky xl:top-[50%] xl:-translate-y-1/2

@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${inter.variable} ${playfair.variable} bg-base-100 text-base-content min-h-screen font-sans antialiased`}
+        className={`${inter.variable} ${playfair.variable} bg-base-100 text-base-content min-h-screen font-sans antialiased overflow-x-hidden`}
       >
         <ThemeProvider
           attribute="data-theme"
