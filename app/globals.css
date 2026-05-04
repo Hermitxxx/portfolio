@@ -1,26 +1,93 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Tailwind 4 Dark Mode Configuration */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+html {
+  scroll-behavior: smooth;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Custom styles and animations from original */
+@keyframes cta-pulse-dark {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.25); }
+  50% { box-shadow: 0 0 0 12px rgba(255,255,255,0); }
+}
+@keyframes cta-pulse-light {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0.2); }
+  50% { box-shadow: 0 0 0 16px rgba(0,0,0,0); }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+[data-theme="dark"] .cta-pulse {
+  animation: cta-pulse-dark 2.5s ease-in-out infinite;
+}
+[data-theme="light"] .cta-pulse {
+  animation: cta-pulse-light 2.5s ease-in-out infinite;
+}
+
+.link-hover-line {
+  position: relative;
+}
+.link-hover-line::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+.link-hover-line:hover::after {
+    width: 100%;
+}
+
+/* Card lift hover */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Social icons */
+.social-icon {
+  transition: transform 0.25s ease, opacity 0.25s ease, border-color 0.25s ease !important;
+}
+
+.social-icon:hover {
+  transform: scale(1.08);
+  opacity: 0.7;
+}
+
+/* Custom DaisyUI 5 themes - High Contrast Minimalist */
+[data-theme="dark"] {
+  --b1: 5 5% 4%;       /* Deep Dark Grey (Original Premium Look) */
+  --b2: 5 5% 8%;
+  --b3: 5 5% 12%;
+  --bc: 0 0% 93%;      /* Near White text */
+  --p: 0 0% 93%;
+  --pc: 0 0% 7%;
+}
+
+[data-theme="light"] {
+  --b1: 0 0% 100%;     /* Pure White background */
+  --b2: 0 0% 97%;
+  --b3: 0 0% 94%;
+  --bc: 0 0% 0%;       /* Pure Black text */
+  --p: 0 0% 0%;
+  --pc: 0 0% 100%;
+}
+
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }
