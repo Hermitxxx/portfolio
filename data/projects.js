@@ -11,16 +11,6 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Skill Sphere",
-    description: "A comprehensive learning management system empowering learners with structured courses, real-world skills, and a connected community experience.",
-    image: "/projects/Cover%20Photos/skill-sphere.png",
-    category: "LMS / EdTech",
-    tech: ["MongoDB", "Express", "React", "Node.js", "Next Js", "Tailwind CSS", "Framer Motion"],
-    link: "https://skill-sphere-a08.vercel.app/",
-    github: "https://github.com/Hermitxxx/skill-sphere-a08",
-  },
-  {
-    id: 3,
     title: "Clinovo",
     description: "Clinovo is a modern, full-stack healthcare consultation platform that bridges the gap between patients and certified medical specialists — anytime, anywhere.",
     image: "/projects/Cover%20Photos/clinovo.png",
@@ -28,6 +18,16 @@ export const projects = [
     tech: ["React", "Next Js", "MongoDB", "Express JS", "Tailwind CSS", "Framer Motion"],
     link: "https://clinovo.vercel.app/",
     github: "https://github.com/Hermitxxx/clinovo-client",
+  },
+  {
+    id: 3,
+    title: "Skill Sphere",
+    description: "A comprehensive learning management system empowering learners with structured courses, real-world skills, and a connected community experience.",
+    image: "/projects/Cover%20Photos/skill-sphere.png",
+    category: "LMS / EdTech",
+    tech: ["MongoDB", "Express", "React", "Node.js", "Next Js", "Tailwind CSS", "Framer Motion"],
+    link: "https://skill-sphere-a08.vercel.app/",
+    github: "https://github.com/Hermitxxx/skill-sphere-a08",
   },
   {
     id: 4,
